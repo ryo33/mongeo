@@ -8,10 +8,11 @@ use Mix.Config
 # with brunch.io to recompile .js and .css sources.
 config :border, Border.Endpoint,
   http: [port: 4000],
+  url: [host: "localhost", port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: []
+  watchers: [npm: ["run", "watch"]]
 
 
 # Watch static and templates for browser reloading.

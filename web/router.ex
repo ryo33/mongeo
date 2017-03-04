@@ -17,6 +17,9 @@ defmodule Border.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/create", PageController, :create
+    get "/join", PageController, :join
+    get "/game", PageController, :game
   end
 
   # Other scopes may use custom stacks.

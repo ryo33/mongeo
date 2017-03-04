@@ -12,4 +12,13 @@ defmodule Border.Polygon do
   def collision?(polygon1, polygon2) do
     SeparatingAxis.collision?(polygon1, polygon2)
   end
+
+  def area(polygon) do
+    alias Collision.Polygon.Edge
+    area = Enum.map(polygon.edges, fn %Edge{point: point, next: next} ->
+      point.x * next.y - point.y * next.x
+    end)
+    |> Enum.sum
+    abs(area / 2)
+  end
 end

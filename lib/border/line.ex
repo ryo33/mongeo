@@ -1,3 +1,11 @@
+defimpl Poison.Encoder, for: Tuple do
+  def encode(tuple, options) do
+    tuple
+    |> Tuple.to_list
+    |> Poison.encode!
+  end
+end
+
 defmodule Border.Line do
   def crosses?({x1, y1}, {x2, y2}, {x3, y3}, {x4, y4}) do
     outer = if x1 >= x2 do
@@ -23,5 +31,12 @@ defmodule Border.Line do
         ((a and !b) or (!a and b)) and ((c and !d) or (!c and d))
       end
     end
+  end
+
+  def crossing_point({x1, y1}, {x2, y2}, {x3, y3}, {x4, y4}) do
+    a = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
+    b = (x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)
+    c = (x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)
+    {b / a, c / a}
   end
 end
