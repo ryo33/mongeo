@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { addVertex } from '../actions.js'
 import GeolocationButton from './GeolocationButton.js'
 import Map from './Map.js'
+import ScoreBoardButton from './ScoreBoardButton.js'
 
 const mapStateToProps = state => {
   const { match, user } = state
@@ -57,6 +58,7 @@ class App extends Component {
               currentX={currentX} currentY={currentY}
               onClick={this.handleClick}
             />
+            <ScoreBoardButton users={users} />
           </div>
         </div>
       )

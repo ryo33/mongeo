@@ -85,7 +85,8 @@ class Map extends Component {
     })
     Object.keys(areas).forEach(id => {
       const area = areas[id]
-      this.renderPolygon(c, area.vertexes.map(mapper))
+      const color = me == area.user_id ? '#ee3' : '#77e'
+      this.renderPolygon(c, area.vertexes.map(mapper), color)
     })
     this.renderCircle(c, mapperX(currentX), mapperY(currentY), '#e77')
     c.restore()
@@ -110,9 +111,9 @@ class Map extends Component {
     c.stroke()
   }
 
-  renderPolygon(c, points) {
+  renderPolygon(c, points, color) {
     c.strokeStyle = '#000'
-    c.fillStyle = '#77e'
+    c.fillStyle = color
     c.beginPath()
     c.moveTo(points[0][0], points[0][1])
     for (let i = 1; i < points.length; i ++) {
