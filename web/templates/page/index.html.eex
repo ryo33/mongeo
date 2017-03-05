@@ -1,11 +1,11 @@
 <h2>Create a room</h2>
 <form action="<%= page_path(@conn, :create) %>">
-  <input type="text" name="room">
+  <p><label for="room">部屋名</label><input id="room" type="text" name="room"></p>
   <input type="submit" value="Create">
 </form>
 <h2>Join to a room</h2>
 <form action="<%= page_path(@conn, :join) %>">
-  <input type="text" name="room">
-  <input type="text" name="name">
+  <p><label for="room">部屋名</label><input id="room" type="text" name="room"></p>
+  <p><label for="name">ユーザーID</label><input id="name" type="text" name="name"></p>
   <input type="submit" value="Create">
 </form>
